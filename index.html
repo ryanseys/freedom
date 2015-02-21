@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Freedom in...</title>
+    <script src="moment.min.js"></script>
+    <script src="readable-range.js"></script>
+    <script src="fittext.js"></script>
+  </head>
+  <body>
+    <style>
+    body {
+      padding: 15px;
+    }
+    #countdown {
+      display: block;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    </style>
+    <div id="countdown"></div>
+    <script>
+      setInterval(function() {
+        var m1 = moment();
+        var m2 = moment('2015-04-23 18:00:00','YYYY-MM-DD HH:mm:ss');
+        var diff = moment.preciseDiff(m1, m2);
+        var array = diff.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,1}\b/g);
+        countdown.innerHTML = array.join('<br>');
+        window.fitText(countdown, 0.6);
+      }, 500);
+    </script>
+  </body>
+</html>
