@@ -20,10 +20,15 @@
       setInterval(function() {
         var m1 = moment();
         var m2 = moment('2015-04-23 17:00:00','YYYY-MM-DD HH:mm:ss');
-        var diff = moment.preciseDiff(m1, m2);
-        var array = diff.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,1}\b/g);
-        countdown.innerHTML = array.join('<br>');
-        window.fitText(countdown, 0.6);
+        if (m1 < m2) {
+          var diff = moment.preciseDiff(m1, m2);
+          var array = diff.match(/\b[\w']+(?:[^\w\n]+[\w']+){0,1}\b/g);
+          countdown.innerHTML = array.join('<br>');
+          window.fitText(countdown, 0.6);
+        } else {
+          countdown.innerHTML = "You're free!";
+          window.fitText(countdown, 0.6);
+        }
       }, 500);
     </script>
   </body>
